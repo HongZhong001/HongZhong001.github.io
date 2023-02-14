@@ -20,28 +20,32 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="文件执行——Edit by Hong_zhong类型一——eval在题目最终语句为eval执行语句时，可以通过调用系统命令来操作 例一、过滤flag：123456789101112 &lt;?php error_reporting(0);  if(isset($_GET[&amp;#x27;c&amp;#x27;])) &amp;#123;   $c &#x3D; $_GET[&amp;#x27;c&amp;#x27;];	    if(!pre">
+<meta property="og:type" content="article">
 <meta property="og:title" content="他信了，他真的信了">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="http://example.com/2023/02/07/%E6%96%87%E4%BB%B6%E6%89%A7%E8%A1%8C/index.html">
 <meta property="og:site_name" content="他信了，他真的信了">
+<meta property="og:description" content="文件执行——Edit by Hong_zhong类型一——eval在题目最终语句为eval执行语句时，可以通过调用系统命令来操作 例一、过滤flag：123456789101112 &lt;?php error_reporting(0);  if(isset($_GET[&amp;#x27;c&amp;#x27;])) &amp;#123;   $c &#x3D; $_GET[&amp;#x27;c&amp;#x27;];	    if(!pre">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-02-06T16:18:06.617Z">
+<meta property="article:modified_time" content="2023-02-11T07:59:30.910Z">
 <meta property="article:author" content="Hong_zhong">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2023/02/07/%E6%96%87%E4%BB%B6%E6%89%A7%E8%A1%8C/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>他信了，他真的信了</title>
+  <title> | 他信了，他真的信了</title>
   
 
 
@@ -170,9 +174,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -188,10 +193,9 @@
       <meta itemprop="name" content="他信了，他真的信了">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
+        <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2023/02/07/%E6%96%87%E4%BB%B6%E6%89%A7%E8%A1%8C/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -221,7 +225,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="文件执行——Edit-by-Hong-zhong"><a href="#文件执行——Edit-by-Hong-zhong" class="headerlink" title="文件执行——Edit by Hong_zhong"></a>文件执行——Edit by Hong_zhong</h3><h4 id="类型一——eval"><a href="#类型一——eval" class="headerlink" title="类型一——eval"></a>类型一——eval</h4><p>在题目最终语句为eval执行语句时，可以通过调用系统命令来操作</p>
+        <h3 id="文件执行——Edit-by-Hong-zhong"><a href="#文件执行——Edit-by-Hong-zhong" class="headerlink" title="文件执行——Edit by Hong_zhong"></a>文件执行——Edit by Hong_zhong</h3><h4 id="类型一——eval"><a href="#类型一——eval" class="headerlink" title="类型一——eval"></a>类型一——eval</h4><p>在题目最终语句为eval执行语句时，可以通过调用系统命令来操作</p>
 <h5 id="例一、过滤flag："><a href="#例一、过滤flag：" class="headerlink" title="例一、过滤flag："></a>例一、过滤flag：</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span> </span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>]))</span><br><span class="line"> &#123;</span><br><span class="line">   <span class="variable">$c</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>];</span><br><span class="line">	    <span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/flag/i&quot;</span>, <span class="variable">$c</span>))&#123;</span><br><span class="line">		      <span class="keyword">eval</span>(<span class="variable">$c</span>);`     </span><br><span class="line"> 	   &#125;   </span><br><span class="line">    &#125;  </span><br><span class="line"> <span class="keyword">else</span>&#123;</span><br><span class="line"> 	   <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"> &#125; </span><br></pre></td></tr></table></figure>
 
 <p>那么可以看到，我们需要传入的变量为<strong>c</strong></p>
@@ -304,21 +308,23 @@
 </li>
 </ul>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+
+        
+
+
+        
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -371,6 +377,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%89%A7%E8%A1%8C%E2%80%94%E2%80%94Edit-by-Hong-zhong"><span class="nav-number">1.</span> <span class="nav-text">文件执行——Edit by Hong_zhong</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E4%B8%80%E2%80%94%E2%80%94eval"><span class="nav-number">1.1.</span> <span class="nav-text">类型一——eval</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E4%B8%80%E3%80%81%E8%BF%87%E6%BB%A4flag%EF%BC%9A"><span class="nav-number">1.1.1.</span> <span class="nav-text">例一、过滤flag：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E4%BA%8C%E3%80%81%E8%BF%87%E6%BB%A4system%EF%BC%9A"><span class="nav-number">1.1.2.</span> <span class="nav-text">例二、过滤system：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E4%B8%89%E3%80%81%E7%9B%B8%E5%AF%B9%E9%9A%BE%E7%82%B9%E7%9A%84%E8%BF%87%E6%BB%A4"><span class="nav-number">1.1.3.</span> <span class="nav-text">例三、相对难点的过滤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E5%9B%9B%E3%80%81%E6%B6%89%E5%8F%8A%E5%88%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%9A%84%E7%BB%95%E8%BF%87"><span class="nav-number">1.1.4.</span> <span class="nav-text">例四、涉及到文件包含的绕过</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E4%BA%94%E3%80%81%E5%9C%A8%E4%BE%8B%E5%9B%9B%E5%9F%BA%E7%A1%80%E4%B8%8A%E7%A8%8D%E5%BE%AE%E5%A2%9E%E5%8A%A0%E9%9A%BE%E5%BA%A6"><span class="nav-number">1.1.5.</span> <span class="nav-text">例五、在例四基础上稍微增加难度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8BN-%E9%BB%91%E6%B4%9E"><span class="nav-number">1.1.6.</span> <span class="nav-text">例N 黑洞</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
