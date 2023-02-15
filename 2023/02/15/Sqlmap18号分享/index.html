@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Sqlmap笔记——Edit by Hong_zhongSqlmap简介：Sqlmap是一个开源的渗透测试工具，可以用来自动化的检测，利用SQL注入漏洞，获取数据库服务器的权限。它具有功能强大的检测引擎，针对各种不同类型数据库的渗透测试的功能选项，包括获取数据库中存储的数据，访问操作系统文件甚至可以通过外带数据连接的方式执行操作系统命令。 目前支持的数据库有MySQL、Oracle、Postgre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="他信了，他真的信了">
+<meta property="og:url" content="http://example.com/2023/02/15/Sqlmap18%E5%8F%B7%E5%88%86%E4%BA%AB/index.html">
+<meta property="og:site_name" content="他信了，他真的信了">
+<meta property="og:description" content="Sqlmap笔记——Edit by Hong_zhongSqlmap简介：Sqlmap是一个开源的渗透测试工具，可以用来自动化的检测，利用SQL注入漏洞，获取数据库服务器的权限。它具有功能强大的检测引擎，针对各种不同类型数据库的渗透测试的功能选项，包括获取数据库中存储的数据，访问操作系统文件甚至可以通过外带数据连接的方式执行操作系统命令。 目前支持的数据库有MySQL、Oracle、Postgre">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/home/hz/.config/Typora/typora-user-images/image-20230215102319913.png">
+<meta property="og:image" content="http://example.com/home/hz/.config/Typora/typora-user-images/image-20230215104527141.png">
+<meta property="og:image" content="http://example.com/home/hz/.config/Typora/typora-user-images/image-20230215103637697.png">
+<meta property="og:image" content="http://example.com/home/hz/.config/Typora/typora-user-images/image-20230215105649533.png">
+<meta property="article:published_time" content="2023-02-15T01:09:42.076Z">
+<meta property="article:modified_time" content="2023-02-15T04:04:50.429Z">
+<meta property="article:author" content="Hong_zhong">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/home/hz/.config/Typora/typora-user-images/image-20230215102319913.png">
+
+<link rel="canonical" href="http://example.com/2023/02/15/Sqlmap18%E5%8F%B7%E5%88%86%E4%BA%AB/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | 他信了，他真的信了</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">他信了，他真的信了</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">垂死病中惊坐起，笑问客从何处来？</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/15/Sqlmap18%E5%8F%B7%E5%88%86%E4%BA%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hong_zhong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="他信了，他真的信了">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-02-15 09:09:42 / 修改时间：12:04:50" itemprop="dateCreated datePublished" datetime="2023-02-15T09:09:42+08:00">2023-02-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Sqlmap笔记——Edit-by-Hong-zhong"><a href="#Sqlmap笔记——Edit-by-Hong-zhong" class="headerlink" title="Sqlmap笔记——Edit by Hong_zhong"></a>Sqlmap笔记——Edit by Hong_zhong</h2><h4 id="Sqlmap简介："><a href="#Sqlmap简介：" class="headerlink" title="Sqlmap简介："></a>Sqlmap简介：</h4><p>Sqlmap是一个开源的渗透测试工具，可以用来自动化的检测，利用SQL注入漏洞，获取数据库服务器的权限。它具有功能强大的检测引擎，针对各种不同类型数据库的渗透测试的功能选项，包括获取数据库中存储的数据，访问操作系统文件甚至可以通过外带数据连接的方式执行操作系统命令。</p>
+<p>目前支持的数据库有MySQL、Oracle、PostgreSQL、Microsoft SQL Server、Microsoft Access等大多数据库。</p>
+<h4 id="Sqlmap使用："><a href="#Sqlmap使用：" class="headerlink" title="Sqlmap使用："></a>Sqlmap使用：</h4><h6 id="最基础的Sqlmap的使用如下"><a href="#最基础的Sqlmap的使用如下" class="headerlink" title="最基础的Sqlmap的使用如下:"></a>最基础的Sqlmap的使用如下:</h6><p><code>sqlmap.py -u &quot;url&quot; --dbs --batch</code>  爆库</p>
+<p><code>sqlmap.py -u &quot;url -D 库名 --tables --batch</code>  爆表</p>
+<p>–后一般接单词&#x2F;缩写                                              -后一般接字母</p>
+<p>-u+url                       -r+抓包文件</p>
+<p>-D后接库名，-T后接表名，-C后接字段名</p>
+<p>爆出字段名之后使用<em>dump</em>列出某字段的具体数据</p>
+<h6 id="统一使用："><a href="#统一使用：" class="headerlink" title="统一使用："></a>统一使用：</h6><p>cookie注入：<code>sqlmap.py -u 注入点 --cookie &quot;参数&quot; --tables --level 2</code></p>
+<p>POST登录框注入：<code>sqlmap.py -r 从文件读取数据 -p 指定的参数 --tables</code></p>
+<p>如果觉得保存到文本中再去跑SQL注入比较麻烦，那么sqlmap还集成了谷歌的搜索模块，即提供了google搜索引擎的搜索</p>
+<p>使用方式为 -g 搜索表达式，</p>
+<p>sqlmap -g 搜索语句就可以直接调用Google引擎进行批量化扫描</p>
+<p> <code>sqlmap.py -u 登录的地址 --forms </code>自动判断注入</p>
+<p> <code>sqlmap.py -u 登录的地址 --data</code> “指定参数”</p>
+<p>绕过waf防火墙：<code>sqlmap.py -u 注入点 -v 3 --dbs --batch --tamper space2morehash.py,space2hash.py,base64encode.py,charencode.py</code></p>
+<p><img src="/home/hz/.config/Typora/typora-user-images/image-20230215102319913.png" alt="image-20230215102319913"></p>
+<h4 id="如何反制Sqlmap（图一乐"><a href="#如何反制Sqlmap（图一乐" class="headerlink" title="如何反制Sqlmap（图一乐"></a>如何反制Sqlmap（图一乐</h4><p>在前面的sqlmap简介中已经提到，sqlmap是一款自动化工具，而最经典的sqlmap使用在命令行中</p>
+<p>这就造成了安全隐患，而这个安全隐患并非sqlmap独占，而是所有命令行工具都有可能面临的威胁</p>
+<h6 id="bash命令"><a href="#bash命令" class="headerlink" title="bash命令"></a>bash命令</h6><p>先来介绍下bash命令</p>
+<p>在bash命令中，某些字符在””中可能会有特殊的含义，例如   <strong>&#96;</strong></p>
+<p>被反引号包裹在其中的字符会被当做系统命令来执行</p>
+<p><img src="/home/hz/.config/Typora/typora-user-images/image-20230215104527141.png" alt="image-20230215104527141"></p>
+<p>那么在sqlmap中也可以这样搞，先用docker拉一个pikachu来</p>
+<p><img src="/home/hz/.config/Typora/typora-user-images/image-20230215103637697.png" alt="image-20230215103637697"></p>
+<p>执行</p>
+<p>sqlmap -u “<a target="_blank" rel="noopener" href="http://127.0.0.1:8000/vul/sqli/sqli_str.php/%60ls%60">http://127.0.0.1:8000/vul/sqli/sqli_str.php\`ls`</a>“</p>
+<p><img src="/home/hz/.config/Typora/typora-user-images/image-20230215105649533.png" alt="image-20230215105649533"></p>
+<p>在执行sqlmap检测的时候列出了自己当前系统的文件</p>
+<h6 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h6>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/02/15/%E8%83%BD%E5%90%A6%E9%80%9A%E8%BF%87%E4%BB%96%E4%BA%BA%E6%89%8B%E6%9C%BA%E5%8F%B7%E6%9F%A5%E8%AF%A2%E4%BB%96%E4%BA%BA%E4%BD%8D%E7%BD%AE/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sqlmap%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94Edit-by-Hong-zhong"><span class="nav-number">1.</span> <span class="nav-text">Sqlmap笔记——Edit by Hong_zhong</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Sqlmap%E7%AE%80%E4%BB%8B%EF%BC%9A"><span class="nav-number">1.0.1.</span> <span class="nav-text">Sqlmap简介：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sqlmap%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="nav-number">1.0.2.</span> <span class="nav-text">Sqlmap使用：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9C%80%E5%9F%BA%E7%A1%80%E7%9A%84Sqlmap%E7%9A%84%E4%BD%BF%E7%94%A8%E5%A6%82%E4%B8%8B"><span class="nav-number">1.0.2.0.1.</span> <span class="nav-text">最基础的Sqlmap的使用如下:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%BB%9F%E4%B8%80%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="nav-number">1.0.2.0.2.</span> <span class="nav-text">统一使用：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%8F%8D%E5%88%B6Sqlmap%EF%BC%88%E5%9B%BE%E4%B8%80%E4%B9%90"><span class="nav-number">1.0.3.</span> <span class="nav-text">如何反制Sqlmap（图一乐</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#bash%E5%91%BD%E4%BB%A4"><span class="nav-number">1.0.3.0.1.</span> <span class="nav-text">bash命令</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%8F%8D%E5%BC%B9shell"><span class="nav-number">1.0.3.0.2.</span> <span class="nav-text">反弹shell</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Hong_zhong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hong_zhong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
