@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="他信了，他真的信了">
-    <meta name="description" content="文件执行——Edit by Hong_zhong类型一——eval在题目最终语句为eval执行语句时，可以通过调用系统命令来操作
-例一、过滤flag：123456789101112 &amp;lt;?php error_reporting(0); ">
+    <meta name="description" content="
+ title： 文件执行——Edit by Hong_zhong top： true img： post-banner.png summary： categories： ctfshow tags：   - 命令执行 date： 2023-">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -376,7 +376,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-02-07
+                    2023-02-15
                 </div>
                 
 
@@ -397,7 +397,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="文件执行——Edit-by-Hong-zhong"><a href="#文件执行——Edit-by-Hong-zhong" class="headerlink" title="文件执行——Edit by Hong_zhong"></a>文件执行——Edit by Hong_zhong</h3><h4 id="类型一——eval"><a href="#类型一——eval" class="headerlink" title="类型一——eval"></a>类型一——eval</h4><p>在题目最终语句为eval执行语句时，可以通过调用系统命令来操作</p>
+                <hr>
+<h2 id="title：-文件执行——Edit-by-Hong-zhong-top：-true-img：-post-banner-png-summary：-categories：-ctfshow-tags：-命令执行-date：-2023-02-15-15-40-10"><a href="#title：-文件执行——Edit-by-Hong-zhong-top：-true-img：-post-banner-png-summary：-categories：-ctfshow-tags：-命令执行-date：-2023-02-15-15-40-10" class="headerlink" title=" title： 文件执行——Edit by Hong_zhong top： true img： post-banner.png summary： categories： ctfshow tags：   - 命令执行 date： 2023-02-15 15:40:10"></a> title： 文件执行——Edit by Hong_zhong<br> top： true<br> img： post-banner.png<br> summary：<br> categories： ctfshow<br> tags：<br>   - 命令执行<br> date： 2023-02-15 15:40:10</h2><h4 id="类型一——eval"><a href="#类型一——eval" class="headerlink" title="类型一——eval"></a>类型一——eval</h4><p>在题目最终语句为eval执行语句时，可以通过调用系统命令来操作</p>
 <h5 id="例一、过滤flag："><a href="#例一、过滤flag：" class="headerlink" title="例一、过滤flag："></a>例一、过滤flag：</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span> </span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>]))</span><br><span class="line"> &#123;</span><br><span class="line">   <span class="variable">$c</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>];</span><br><span class="line">	    <span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/flag/i&quot;</span>, <span class="variable">$c</span>))&#123;</span><br><span class="line">		      <span class="keyword">eval</span>(<span class="variable">$c</span>);`     </span><br><span class="line"> 	   &#125;   </span><br><span class="line">    &#125;  </span><br><span class="line"> <span class="keyword">else</span>&#123;</span><br><span class="line"> 	   <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"> &#125; </span><br></pre></td></tr></table></figure>
 
 <p>那么可以看到，我们需要传入的变量为<strong>c</strong></p>
@@ -505,7 +506,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/02/07/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">http://example.com/2023/02/07/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/</a>
+                    <a href="http://example.com/2023/02/15/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">http://example.com/2023/02/15/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -619,48 +620,12 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/2023/02/15/%E8%83%BD%E5%90%A6%E9%80%9A%E8%BF%87%E4%BB%96%E4%BA%BA%E6%89%8B%E6%9C%BA%E5%8F%B7%E6%9F%A5%E8%AF%A2%E4%BB%96%E4%BA%BA%E4%BD%8D%E7%BD%AE/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-15
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Hong_zhong
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2023/02/07/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">
+                <a href="/2023/02/15/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">
                     <div class="card-image">
                         
                         
@@ -677,7 +642,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-15
                             </span>
                         <span class="publish-author">
                             
@@ -688,6 +653,43 @@
                     </div>
                 </div>
 
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/02/15/Sqlmap18%E5%8F%B7%E5%88%86%E4%BA%AB/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Hong_zhong
+                            
+                        </span>
+                    </div>
+                </div>
                 
             </div>
         </div>
@@ -848,7 +850,7 @@
                    type="playlist"
                    id="503838841"
                    fixed='true'
-                   autoplay='false'
+                   autoplay='true'
                    theme='#42b983'
                    loop='all'
                    order='random'
