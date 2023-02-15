@@ -1,1 +1,5 @@
 /* Here is your custom css styles. */
+/* 添加背景像素纹*/
+.bg-cover::before {
+    background-image: url('https://codecheng-1305009997.cos.ap-chengdu.myqcloud.com/img/20210504115955.png');/*这里使用我的腾讯云cos图床，你可以下载下来保存*/
+}
