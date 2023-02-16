@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>命令执行</title>
+      <link href="/posts/44a5.html"/>
+      <url>/posts/44a5.html</url>
+      
+        <content type="html"><![CDATA[<h4 id="类型一——eval"><a href="#类型一——eval" class="headerlink" title="类型一——eval"></a>类型一——eval</h4><p>在题目最终语句为eval执行语句时，可以通过调用系统命令来操作</p><h5 id="例一、过滤flag："><a href="#例一、过滤flag：" class="headerlink" title="例一、过滤flag："></a>例一、过滤flag：</h5><pre><code> &lt;?php error_reporting(0);  if(isset($_GET['c'])) {   $c = $_GET['c'];        if(!preg_match("/flag/i", $c)){              eval($c);`            }       }   else{       highlight_file(__FILE__); } </code></pre><p>那么可以看到，我们需要传入的变量为<strong>c</strong></p><p>同时过滤掉了flag字符</p><p>因为其中没有进行任何的过滤，且会执行<strong>c</strong></p><p>那我们就可以通过system(“ls”)直接调用系统命令来去观察目录结构</p><p>看到了flag.php，但是因为flag被过滤掉了，不能直接调用，那就可以使用<strong>cp</strong>来进行替换</p><p>cp命令全程（copy file），将前者中的文件复制到后者中，在复制的过程中，注意flag字符是被过滤的，所以要用 <strong>?</strong> 等通配符去进行替换</p><h5 id="例二、过滤system："><a href="#例二、过滤system：" class="headerlink" title="例二、过滤system："></a>例二、过滤system：</h5><pre><code> &lt;?phperror_reporting(0);if(isset($_GET['c'])){    $c = $_GET['c'];    if(!preg_match("/flag|system|php/i", $c)){        eval($c);    }    }else{    highlight_file(__FILE__);} </code></pre><p>关于本题，有招，在linux中，有一个符号可以将被它包裹的东西当作系统命令来运行</p><p>它就是——————————反引号</p><p>我们只需要传入payload:?c=<code>cp fla?.??? 1.txt</code>,然后访问1.txt即可，这里因为过滤掉了flag和php，用通配符代替下</p><h5 id="例三、相对难点的过滤"><a href="#例三、相对难点的过滤" class="headerlink" title="例三、相对难点的过滤"></a>例三、相对难点的过滤</h5><pre><code> &lt;?phperror_reporting(0);if(isset($_GET['c'])){    $c = $_GET['c'];    if(!preg_match("/flag|system|php|cat|sort|shell|.| |'/i", $c)){        eval($c);    }}else{    highlight_file(__FILE__);} </code></pre><p>可以看到，我们这里过滤的东西非常多，虽然但是反引号还活着，也不可以使用上一道题的方法直接走，因为空格没了,nnd</p><p>这里我们就可以采用一种新的方法：<strong>跳板</strong></p><p>思路就是题目要求我传进去个c</p><p>但是我传进去的c的内容是<em>执行a</em>，那a受不受过滤的限制？</p><p>不受</p><p>那么该如何实现呢?</p><p>首先我们的c要接收一个变量，定为1,那么肯定要执行接收的命令</p><p>就用到了</p><p><code>eval($_GET[1])</code></p><p>这是表示接收1的命令，那咋样才能定义这个1的值呢？</p><p>我们先结束这条语句，然后在后面用&amp;连接</p><p>1不受限制，那我们就可以直接写payload了</p><p>payload:?c=eval($_GET[1]);&amp;1=system(‘cat flag.php’);</p><p>这里用到了cat，简单来说就是显示后续文件内容的一条命令</p><p>执行完之后，发现。woc，空白的</p><p>别慌</p><p>我们查看下源代码即可得到flag</p><p>那有无更简单的办法？</p><p>咱不是用cat了吗，这玩意显示文件时候是按行正序，如果flag正好在末尾就不好办了</p><p>咋样才能按行倒序？</p><p>cat倒过来是啥？</p><p>tac！</p><p>诶嘿，把payload里的cat换成tac</p><p>得到flag</p><h5 id="例四、涉及到文件包含的绕过"><a href="#例四、涉及到文件包含的绕过" class="headerlink" title="例四、涉及到文件包含的绕过"></a>例四、涉及到文件包含的绕过</h5><p>文件包含漏洞，主要是因为以下的四个函数引起的</p><pre><code>include()、include_once()、require()、require_once()</code></pre><p>这里主要来说一说<strong>include</strong></p><p>include:包含并运行指定的文件，包含文件发生错误时，程序警告，但会继续执行。</p><p>当我们使用这四个函数去包含文件时，无论被包含的是什么类型的文件，都会被当作PHP文件进行解析</p><p>文件包含有两种</p><p>分别是本地LFI和远程RFI</p><p>这道题我们用到了LFI中的php://filter</p><p>说说index2.php?file=php://filter/read=convert.base64-encode/resource=index.php的含义 首先这是一个file关键字的get参数传递，php://是一种协议名称，php://filter/是一种访问本地文件的协议，<code>/read=convert.base64-encode/</code>表示读取的方式是base64编码后，<code>resource=index.php</code>表示目标文件为index.php。</p><pre><code> &lt;?phperror_reporting(0);if(isset($_GET['c'])){    $c = $_GET['c'];    if(!preg_match("/flag|system|php|cat|sort|shell|.| |'|`|echo|;|(|"/i", $c)){        eval($c);    }}else{    highlight_file(__FILE__);}</code></pre><p>那么在本题中可以这样应用</p><p>执行完之后我们得到了一串base64编码</p><p>直接解码看一下</p><h5 id="例五、在例四基础上稍微增加难度"><a href="#例五、在例四基础上稍微增加难度" class="headerlink" title="例五、在例四基础上稍微增加难度"></a>例五、在例四基础上稍微增加难度</h5><pre><code>&lt;?phperror_reporting(0);if(isset($_GET['c'])){    $c = $_GET['c'];    if(!preg_match("/flag|system|php|cat|sort|shell|.| |'|`|echo|;|(|"/i", $c)){        eval($c);    }}else{    highlight_file(__FILE__);} </code></pre><p>这道题相对于例四，没有什么太大的变化，所以我们可以使用例四的方法进行处理</p><p>那么咱们换一个方法</p><p>也是文件包含，那么咱们可以使用<strong>require</strong></p><p>require实际上和include没有太大的区别</p><p><strong>require () 语句的性能与 include () 相类似，都是包括并运行指定文件。不同之处在于：对 include () 语句来说，在执行文件时每次都要进行读取和评估；而对于 require () 来说，文件只处理一次</strong></p><h5 id="例N-黑洞"><a href="#例N-黑洞" class="headerlink" title="例N 黑洞"></a>例N 黑洞</h5><blockquote><p>1&gt;/dev/null 2&gt;&amp;1</p></blockquote><blockquote><p>代表重定向到哪里，例如：echo “123” &gt; /home/123.txt 1 表示stdout标准输出，系统默认值是1，所以”&gt;/dev/null”等同于”1&gt;/dev/null” 2 表示stderr标准错误 &amp; 表示等同于的意思，2&gt;&amp;1，表示2的输出重定向等同于1</p></blockquote><p>使用&amp;&amp;绕过即可</p><p>空格被ban</p><pre><code>{cat,flag.txt} cat${IFS}flag.txtcat$IFS$9flag.txtcat&lt;flag.txtcat&lt;&gt;flag.txt</code></pre><ul><li>require 一般放在 PHP 文件的最前面，程序在执行前就会先导入要引用的文件；</li><li>include 一般放在程序的流程控制中，当程序执行时碰到才会引用，简化程序的执行流程。</li><li>require 引入的文件有错误时，执行会中断，并返回一个致命错误；</li><li>include 引入的文件有错误时，会继续执行，并返回一个警告。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 那么可以看到，我们需要传入的变量为**c** </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CTF </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>2022总结：我是怎样从一个混子到如今小有所成</title>
       <link href="/posts/7672.html"/>
       <url>/posts/7672.html</url>

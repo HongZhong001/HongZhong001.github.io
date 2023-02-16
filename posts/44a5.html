@@ -4,8 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="他信了，他真的信了">
-    <meta name="description" content="他信了，他真的信了">
+    <meta name="keywords" content="命令执行, 他信了，他真的信了">
+    <meta name="description" content="类型一——eval在题目最终语句为eval执行语句时，可以通过调用系统命令来操作
+例一、过滤flag： &amp;lt;?php 
+error_reporting(0);
+  if(isset($_GET[&#39;c&#39;]))
+ {
+   $c = $_G">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>他信了，他真的信了</title>
+    <title>命令执行 | 他信了，他真的信了</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
     <style>
@@ -31,48 +36,7 @@
 
 
 
-    <!-- index cover -->
-    <!-- <link rel="stylesheet preload" type="text/css" href="/css/indexcover.css"> -->
-    <style>
-        .carousel-control {
-            width: 45px;
-            height: 45px;
-            line-height: 55px;
-            border-radius: 45px;
-            background: transparent;
-            cursor: pointer;
-            z-index: 100;
-        }
-        
-        #prev-cover {
-            position: absolute;
-            top: 48%;
-            left: 8px;
-        }
-        
-        #next-cover {
-            position: absolute;
-            top: 48%;
-            right: 8px;;
-        }
-        
-        #prev-cover i {
-            margin-right: 3px;
-        }
-        
-        #next-cover i {
-            margin-left: 3px;
-        }
-        
-        .carousel-control:hover {
-            background-color: rgba(0, 0, 0, .4);
-        }
-        
-        .carousel-control i {
-            color: #fff;
-            font-size: 2.4rem;
-        }
-    </style>
+    <!-- bg-cover style     -->
 
 
 
@@ -93,6 +57,10 @@
 
 
 
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
 
 
 
@@ -482,410 +450,617 @@
     
 
 
-<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
-    
 
-    <div class="carousel-item  white-text bg-cover about-cover">
-        <div class="container">
-            <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                Hong_zhong
-                
-            </div>
-
-            <div class="description center-align">
-                
-                <span id="subtitle"></span>
-                <script src="/libs/typed/typed.js"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: [ 
-                            
-                                "如有一味绝境，非历十方生死",
-                            
-                                "Never really desperate, only the lost of the soul",
-                            
-                        ],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
-                
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">命令执行</h1>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 
-<script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
-</script>
 
 
-
-            <div class="cover-btns">
-                <a href="#indexCard" class="waves-effect waves-light btn">
-                    <i class="fa fa-angle-double-down"></i>开始阅读
-                </a>
-
-                
-                    <a href="https://github.com/HongZhong001" class="waves-effect waves-light btn" target="_blank">
-                        <i class="fab fa-github-alt"></i>Github
-                    </a>
-                
-            </div>
-            <div class="cover-social-link">
-    <a href="mailto:chenzhilin@criptext.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-</div>
-        </div>
-    </div>
+<main class="post-container content">
 
     
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/CTF/">
+                                <span class="chip bg-color">CTF</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E9%82%A3%E4%B9%88%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%EF%BC%8C%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E4%BC%A0%E5%85%A5%E7%9A%84%E5%8F%98%E9%87%8F%E4%B8%BA-c/" class="post-category">
+                                那么可以看到，我们需要传入的变量为**c**
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-02-16
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-02-16
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.4k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    5 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h4 id="类型一——eval"><a href="#类型一——eval" class="headerlink" title="类型一——eval"></a>类型一——eval</h4><p>在题目最终语句为eval执行语句时，可以通过调用系统命令来操作</p>
+<h5 id="例一、过滤flag："><a href="#例一、过滤flag：" class="headerlink" title="例一、过滤flag："></a>例一、过滤flag：</h5><pre><code> &lt;?php 
+error_reporting(0);
+  if(isset($_GET['c']))
+ {
+   $c = $_GET['c'];
+        if(!preg_match("/flag/i", $c)){
+              eval($c);`     
+       }   
+    }  
+ else{
+       highlight_file(__FILE__);
+ } 
+</code></pre>
+<p>那么可以看到，我们需要传入的变量为<strong>c</strong></p>
+<p>同时过滤掉了flag字符</p>
+<p>因为其中没有进行任何的过滤，且会执行<strong>c</strong></p>
+<p>那我们就可以通过system(“ls”)直接调用系统命令来去观察目录结构</p>
+<p>看到了flag.php，但是因为flag被过滤掉了，不能直接调用，那就可以使用<strong>cp</strong>来进行替换</p>
+<p>cp命令全程（copy file），将前者中的文件复制到后者中，在复制的过程中，注意flag字符是被过滤的，所以要用 <strong>?</strong> 等通配符去进行替换</p>
+<h5 id="例二、过滤system："><a href="#例二、过滤system：" class="headerlink" title="例二、过滤system："></a>例二、过滤system：</h5><pre><code> &lt;?php
+error_reporting(0);
+if(isset($_GET['c'])){
+    $c = $_GET['c'];
+    if(!preg_match("/flag|system|php/i", $c)){
+        eval($c);
+    }
+    
+}else{
+    highlight_file(__FILE__);
+} 
+</code></pre>
+<p>关于本题，有招，在linux中，有一个符号可以将被它包裹的东西当作系统命令来运行</p>
+<p>它就是——————————反引号</p>
+<p>我们只需要传入payload:?c=<code>cp fla?.??? 1.txt</code>,然后访问1.txt即可，这里因为过滤掉了flag和php，用通配符代替下</p>
+<h5 id="例三、相对难点的过滤"><a href="#例三、相对难点的过滤" class="headerlink" title="例三、相对难点的过滤"></a>例三、相对难点的过滤</h5><pre><code> &lt;?php
+error_reporting(0);
+if(isset($_GET['c'])){
+    $c = $_GET['c'];
+    if(!preg_match("/flag|system|php|cat|sort|shell|.| |'/i", $c)){
+        eval($c);
+    }
+}else{
+    highlight_file(__FILE__);
+} 
+</code></pre>
+<p>可以看到，我们这里过滤的东西非常多，虽然但是反引号还活着，也不可以使用上一道题的方法直接走，因为空格没了,nnd</p>
+<p>这里我们就可以采用一种新的方法：<strong>跳板</strong></p>
+<p>思路就是题目要求我传进去个c</p>
+<p>但是我传进去的c的内容是<em>执行a</em>，那a受不受过滤的限制？</p>
+<p>不受</p>
+<p>那么该如何实现呢?</p>
+<p>首先我们的c要接收一个变量，定为1,那么肯定要执行接收的命令</p>
+<p>就用到了</p>
+<p><code>eval($_GET[1])</code></p>
+<p>这是表示接收1的命令，那咋样才能定义这个1的值呢？</p>
+<p>我们先结束这条语句，然后在后面用&amp;连接</p>
+<p>1不受限制，那我们就可以直接写payload了</p>
+<p>payload:?c=eval($_GET[1]);&amp;1=system(‘cat flag.php’);</p>
+<p>这里用到了cat，简单来说就是显示后续文件内容的一条命令</p>
+<p>执行完之后，发现。woc，空白的</p>
+<p>别慌</p>
+<p>我们查看下源代码即可得到flag</p>
+<p>那有无更简单的办法？</p>
+<p>咱不是用cat了吗，这玩意显示文件时候是按行正序，如果flag正好在末尾就不好办了</p>
+<p>咋样才能按行倒序？</p>
+<p>cat倒过来是啥？</p>
+<p>tac！</p>
+<p>诶嘿，把payload里的cat换成tac</p>
+<p>得到flag</p>
+<h5 id="例四、涉及到文件包含的绕过"><a href="#例四、涉及到文件包含的绕过" class="headerlink" title="例四、涉及到文件包含的绕过"></a>例四、涉及到文件包含的绕过</h5><p>文件包含漏洞，主要是因为以下的四个函数引起的</p>
+<pre><code>include()、include_once()、require()、require_once()
+</code></pre>
+<p>这里主要来说一说<strong>include</strong></p>
+<p>include:包含并运行指定的文件，包含文件发生错误时，程序警告，但会继续执行。</p>
+<p>当我们使用这四个函数去包含文件时，无论被包含的是什么类型的文件，都会被当作PHP文件进行解析</p>
+<p>文件包含有两种</p>
+<p>分别是本地LFI和远程RFI</p>
+<p>这道题我们用到了LFI中的php://filter</p>
+<p>说说index2.php?file=php://filter/read=convert.base64-encode/resource=index.php的含义 首先这是一个file关键字的get参数传递，php://是一种协议名称，php://filter/是一种访问本地文件的协议，<code>/read=convert.base64-encode/</code>表示读取的方式是base64编码后，<code>resource=index.php</code>表示目标文件为index.php。</p>
+<pre><code> &lt;?php
+error_reporting(0);
+if(isset($_GET['c'])){
+    $c = $_GET['c'];
+    if(!preg_match("/flag|system|php|cat|sort|shell|.| |'|`|echo|;|(|"/i", $c)){
+        eval($c);
+    }
+}else{
+    highlight_file(__FILE__);
+}
+</code></pre>
+<p>那么在本题中可以这样应用</p>
+<p>执行完之后我们得到了一串base64编码</p>
+<p>直接解码看一下</p>
+<h5 id="例五、在例四基础上稍微增加难度"><a href="#例五、在例四基础上稍微增加难度" class="headerlink" title="例五、在例四基础上稍微增加难度"></a>例五、在例四基础上稍微增加难度</h5><pre><code>&lt;?php
+error_reporting(0);
+if(isset($_GET['c'])){
+    $c = $_GET['c'];
+    if(!preg_match("/flag|system|php|cat|sort|shell|.| |'|`|echo|;|(|"/i", $c)){
+        eval($c);
+    }
+}else{
+    highlight_file(__FILE__);
+} 
+</code></pre>
+<p>这道题相对于例四，没有什么太大的变化，所以我们可以使用例四的方法进行处理</p>
+<p>那么咱们换一个方法</p>
+<p>也是文件包含，那么咱们可以使用<strong>require</strong></p>
+<p>require实际上和include没有太大的区别</p>
+<p><strong>require () 语句的性能与 include () 相类似，都是包括并运行指定文件。不同之处在于：对 include () 语句来说，在执行文件时每次都要进行读取和评估；而对于 require () 来说，文件只处理一次</strong></p>
+<h5 id="例N-黑洞"><a href="#例N-黑洞" class="headerlink" title="例N 黑洞"></a>例N 黑洞</h5><blockquote>
+<p>1&gt;/dev/null 2&gt;&amp;1</p>
+</blockquote>
+<blockquote>
+<p>代表重定向到哪里，例如：echo “123” &gt; /home/123.txt 1 表示stdout标准输出，系统默认值是1，所以”&gt;/dev/null”等同于”1&gt;/dev/null” 2 表示stderr标准错误 &amp; 表示等同于的意思，2&gt;&amp;1，表示2的输出重定向等同于1</p>
+</blockquote>
+<p>使用&amp;&amp;绕过即可</p>
+<p>空格被ban</p>
+<pre><code>{cat,flag.txt} 
+cat${IFS}flag.txt
+cat$IFS$9flag.txt
+cat&lt;flag.txt
+cat&lt;&gt;flag.txt
+</code></pre>
+<ul>
+<li>require 一般放在 PHP 文件的最前面，程序在执行前就会先导入要引用的文件；</li>
+<li>include 一般放在程序的流程控制中，当程序执行时碰到才会引用，简化程序的执行流程。</li>
+<li>require 引入的文件有错误时，执行会中断，并返回一个致命错误；</li>
+<li>include 引入的文件有错误时，会继续执行，并返回一个警告。</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">HongZhong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://hongzhong001.github.io/posts/44a5.html">https://hongzhong001.github.io/posts/44a5.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">HongZhong</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/CTF/">
+                                    <span class="chip bg-color">CTF</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">没钱吃饭了捏555</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
     $(function () {
-        let coverSlider = $('.carousel');
+        $('.tabs').tabs();
+    });
+</script>
 
-        //用户触摸轮播自动 restartPlay 是否生效
-        let initUserPressedOrDraggedActive = false
+            
+        </div>
+    </div>
 
-        //用户触摸轮播自动 restartPlay
-        function initUserPressedOrDragged(instance) {
-            setInterval(() => {
-                if (instance.pressed || instance.dragged) {
-                    // console.log('initUserPressedOrDragged: ',instance.pressed,instance.dragged)
-                    restartPlay()
-                }
-            }, 1000)
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/posts/44a5.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="命令执行">
+                        
+                        <span class="card-title">命令执行</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%82%A3%E4%B9%88%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%EF%BC%8C%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E4%BC%A0%E5%85%A5%E7%9A%84%E5%8F%98%E9%87%8F%E4%B8%BA-c/" class="post-category">
+                                    那么可以看到，我们需要传入的变量为**c**
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CTF/">
+                        <span class="chip bg-color">CTF</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/7672.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="2022总结：我是怎样从一个混子到如今小有所成">
+                        
+                        <span class="card-title">2022总结：我是怎样从一个混子到如今小有所成</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            如果硬要问我是在什么时候入门的，那就要说到高一下学期我开始学习Python
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Hong_Zhong
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%80%BB%E7%BB%93/">
+                        <span class="chip bg-color">总结</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
         }
 
-        coverSlider.carousel({
-            duration: Number('120'),
-            fullWidth: true,
-            indicators: 'true' === 'true',
-            onCycleTo() {
-                if (!initUserPressedOrDraggedActive) {
-                    // console.log('initUserPressedOrDraggedActive')
-                    initUserPressedOrDragged(this)
-                    initUserPressedOrDraggedActive = true
-                }
-            },
-        })
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
 
-        let carouselIntervalId;
-        
-        // Loop to call the next cover article picture.
-        let autoCarousel = function () {
-            carouselIntervalId = setInterval(function () {
-                coverSlider.carousel('next');
-            }, 5000);
-        };
-        autoCarousel();
-        
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
 
-        function restartPlay() {
-            
-            clearInterval(carouselIntervalId);
-            autoCarousel();
-            
-        };
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 他信了，他真的信了<br />'
+            + '文章作者: Hong_zhong<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归迷雾安全Hongzhong所有，任何形式的转载都请注明出处。';
 
-        
-        // prev and next cover post.
-        $('#prev-cover').click(function () {
-            coverSlider.carousel('prev');
-            restartPlay();
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
         });
-        $('#next-cover').click(function () {
-            coverSlider.carousel('next');
-            restartPlay();
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
         });
         
     });
 </script>
 
-
-
-<main class="content">
-
     
-    <div id="indexCard" class="index-card">
-        <div class="container ">
-            <div class="card">
-                <div class="card-content">
-                    
-                        <div class="dream">
-    
-    <div class="title center-align">
-        <i class="far fa-lightbulb"></i>&nbsp;&nbsp;简介
-    </div>
-    
-    <div class="row">
-        <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
-            华为云享专家、阿里云专家博主、腾讯云自媒体分享计划博主、华为MindSpore截至第四季度最年轻的优秀开发者、迷雾安全团队核心成员
-        </div>
-    </div>
-</div>
-
-                    
-
-                    
-
-                    
-
-                    
-                    <div id="recommend-sections" class="recommend">
-                        
-
-
-
-
-
-<div class="title"><i class="far fa-thumbs-up"></i>&nbsp;&nbsp;推荐文章</div>
-
-<div class="row">
-
-    
-    
-    <div class="col s12" >
-        
-            <div class="post-card" style="background-image: url('/medias/featureimages/4.jpg')">
-            
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                    
-                </div>
-                <a href="/posts/7672.html">
-                    <h3 class="post-title">2022总结：我是怎样从一个混子到如今小有所成</h3>
-                </a>
-                <p class="post-description">如果硬要问我是在什么时候入门的，那就要说到高一下学期我开始学习Python</p>
-                <a href="/posts/7672.html" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-
-</div>
-
-
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    
-
-    
-
-    <!-- 所有文章卡片 -->
-    <article id="articles" class="container articles">
-        <div class="row article-row">
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/posts/44a5.html">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="命令执行">
-                            
-                            <span class="card-title">命令执行</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                类型一——eval在题目最终语句为eval执行语句时，可以通过调用系统命令来操作
-例一、过滤flag： &lt;?php 
-error_reporting(0);
-  if(isset($_GET['c']))
- {
-   $c = $_G
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-16
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E9%82%A3%E4%B9%88%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%EF%BC%8C%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E4%BC%A0%E5%85%A5%E7%9A%84%E5%8F%98%E9%87%8F%E4%B8%BA-c/" class="post-category">
-                                    那么可以看到，我们需要传入的变量为**c**
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/CTF/">
-                            <span class="chip bg-color">CTF</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/posts/7672.html">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="2022总结：我是怎样从一个混子到如今小有所成">
-                            
-                            <span class="card-title">2022总结：我是怎样从一个混子到如今小有所成</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                如果硬要问我是在什么时候入门的，那就要说到高一下学期我开始学习Python
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-16
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                Hong_Zhong
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%80%BB%E7%BB%93/">
-                            <span class="chip bg-color">总结</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/posts/0.html">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                            
-                            <span class="card-title"></span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                SQL注入笔记——Edit by Hong_zhong1、最简单的联合注入
-首先判断闭合类型
-
-数字型闭合：id=1时的结果与id=2-1时的结果一致
-字符型闭合：id=1时和id=1a时一致，再去深入判断具体类型
-
-判断字段数
-?id=1
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-15
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                Hong_zhong
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/posts/0.html">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                            
-                            <span class="card-title"></span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                头部声明：如果您是来学怎么定位他人的，不好意思，这是违法行为，我不会，也不会教。
-以下是废话
-
- 事情是这样的
-今天凌晨，班级群里突然炸了。
-虽然我不咋看这群，但因为在我小号里就没设免打扰。
-我一看，好家伙，人口失踪（不是
-某位同学的一个外
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-15
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                Hong_zhong
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-        </div>
-    </article>
 
 </main>
 
