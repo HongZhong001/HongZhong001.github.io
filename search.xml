@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>图书馆里坐一会，破解了馆长室的WIFI？(省流：标题党</title>
+      <link href="/posts/fe20.html"/>
+      <url>/posts/fe20.html</url>
+      
+        <content type="html"><![CDATA[<p>​</p><p>之前一直吹牛b说要干掉舍友的wifi，可惜没有真才实学。正好昨天我心心念念的无线网卡到了，今天就在图书馆模拟一把</p><p>没有人能拦住我红中.jpg</p><p><strong>注意：私自破解他人WiFi属于违法行为，我这里只是浅尝辄止。后续攻击采用个人热点</strong></p><hr><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>首先我们先来看看网卡支不支持监听</p><pre><code>airmon-ng</code></pre><p><img src="/" title="点击并拖拽以移动"></p><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f1a18e2f4664489fa95e5d6128337b39~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p><p> 可以看到我的两个网卡都是可以监听的</p><pre><code>airmon-ng start wlan1</code></pre><p><img src="/" title="点击并拖拽以移动"></p><p>我买的网卡是wlan1，大部分人应该都是wlan0，改一下就行</p><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/feb9d18dde504b1fbe21bbd9966a11a8~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p><p> 开启监听以后，再次调用arimon时，发现网卡已经从wlan1变成了wlan1mon</p><p>表示已经进入了监听模式</p><p>当然，如果没变，也不是没进入监听模式，只不过后面敲命令时候注意把</p><p>wlan1mon改成wlan1就行了</p><h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>连接上图书馆的公共WIFI</p><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0593b7b32aa14f159a5fff44a9bac98d~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p><p> 使用</p><pre><code>airodump-ng wlan1mon</code></pre><p><img src="/" title="点击并拖拽以移动"></p><p>扫描有哪些WIFI</p><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0611fadabef04cc6b63b0029a7531ce3~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p><p> 当然没截全部，MAC地址是能看到的</p><p>定睛一看</p><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/852b0f2d3f31450eb7df77e50ba94b56~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p><p> 对不起了，亲爱的馆长</p><blockquote><p><code>airodump-ng -c 1 --bssid 路由器MAC地址 -w home wlan1mon</code></p><p>-c 指定信道，即相应的CH</p><p>-bssid指定目标路由器的BSSID</p><p>-w指定抓取的数据包保存的目录</p></blockquote><p>但抓到包的前提是必须有新用户连接WIFI</p><p>那馆长室一天也没啥变动啊，咋办？</p><p>有招</p><p>看我红中把他踢下去(洪水攻击</p><pre><code>aireplay-ng -0 100 -a 路由器mac地址 -c 目标设备的mac地址 wlan1mon</code></pre><p><img src="/" title="点击并拖拽以移动"></p><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ba506167e3504d3cbcbb6e8652bfa4f4~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p><p>到这步，就该结束了， 在往下整我估计得被撵出去了</p><p>往下接着讲实操</p><h2 id="个人热点实操"><a href="#个人热点实操" class="headerlink" title="个人热点实操"></a>个人热点实操</h2><p>我们先扫WIFI</p><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/10078364350e47bebc0196d17138a8b3~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p><p> Pixel是我的热点，就打它</p><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/34a04bbd6ffb43ea9b5ac6c0ee8c822c~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p><p> 等待抓包</p><p> 这里省略踢下去再抓包的步骤</p><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/899d2132e0e64b448352ac0499de4eec~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p><pre><code> aircrack -ng -a2 -b +mac地址 + -w + 字典文件 + 抓包资源（一般在桌面</code></pre><p><img src="/" title="点击并拖拽以移动"></p><p>（我的评价是，不如py跑脚本</p><p>​</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 渗透 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>18号分享（1）</title>
       <link href="/posts/d436.html"/>
       <url>/posts/d436.html</url>
