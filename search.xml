@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>信息泄露</title>
+      <link href="/posts/cf35.html"/>
+      <url>/posts/cf35.html</url>
+      
+        <content type="html"><![CDATA[<h3 id="web-信息泄露"><a href="#web-信息泄露" class="headerlink" title="web - 信息泄露"></a>web - 信息泄露</h3><p>——以下知识点均为付费靶场知识点解析</p><p>关于为什么要学习信息泄露，问，就是我也不知道，反正会考</p><p>攻击信息泄露的方式有很多种</p><p>比如最简单的F12查看源代码，或者抓包看请求/响应</p><p>难的就是网站后台源码泄露了，其实也不算难，就是有的东西压根没听过，不过问题不大，拿后台扫描工具一扫就出来力</p><h4 id="例一F12：web欢迎你"><a href="#例一F12：web欢迎你" class="headerlink" title="例一F12：web欢迎你"></a>例一F12：web欢迎你</h4><p>web最基础，F12</p><p>看注释</p><p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b74ec725f75c41d29551ceb2719464c4~tplv-k3u1fbpfcp-watermark.image" alt="图片.png"><br>轻轻松松捏</p><h4 id="例二右键没力555"><a href="#例二右键没力555" class="headerlink" title="例二右键没力555"></a>例二右键没力555</h4><script type="text/javascript"> window.oncontextmenu = function(){return false}; //禁用鼠标右键 window.onselectstart = function(){return false}; //禁用页面选择 window.onkeydown = function(){if (event.keyCode==123){event.keyCode=0;event.returnValue=false;}}; </script> //禁用F12键<p>这题的flag也是在源代码里面，相较上一题，这题禁用了右键和f12，那想绕过也有好几种姿势</p><p>1、去浏览器设置里，把js禁用掉，当然，有的题如果把js禁用就不显示，这样的题咱另说</p><p>2、网址前面加上<code>view-source:</code></p><p>3、ctrl + u查看源代码</p><p>4、咱先不在这里打开控制台，随便新建个别的标签页，在新建的标签页里F12/右键检查，诶，然后，咱再回来，控制台就打开了捏</p><h4 id="例三协议头信息泄露"><a href="#例三协议头信息泄露" class="headerlink" title="例三协议头信息泄露"></a>例三协议头信息泄露</h4><p>基础的抓包咱得会，打开抓包软件，开始拦截之后刷新页面，这时我们拦截的就是请求包，请求包里没有的话，再截个响应试试捏？</p><h4 id="例四robots后台泄露"><a href="#例四robots后台泄露" class="headerlink" title="例四robots后台泄露"></a>例四robots后台泄露</h4><p>这个文件实际上怎么理解都可以，我个人的理解是每个网站后台都有，目的是为了告诉爬虫哪些你可以爬，那些你不可以爬，那如果我们要访问的话，可以直接在网址后面加<code>/robots.txt</code></p><p>ps:后面还会遇到各种稀奇古怪的网站文件，但其实，咱都不用记，拿御剑/dirsearch一扫，有问题的就全出来力</p><p>诸如此类的还有：</p><p>/index.phps</p><p>版本控制器：/.git 和 /.svn</p><h4 id="例五vim缓存"><a href="#例五vim缓存" class="headerlink" title="例五vim缓存"></a>例五vim缓存</h4><p>在使用vim修改文件的时候，系统会默认创建一个为原文件名+.swp的备份文件，等修改结束保存后，就自动删除</p><p>在有的题目中，此处便是个考点，例如访问</p><p>index.php.swp</p><p>注：index.php/html一般是网站首页的文件</p><h4 id="例六cookie泄露"><a href="#例六cookie泄露" class="headerlink" title="例六cookie泄露"></a>例六cookie泄露</h4><p>cookie是网站<strong>请求包</strong>中一个差不多必须有的东西，他里面存储了一些除主机信息，访问时间以外的一些其他特征信息，通过抓包可以看到cookie</p><p>当然，在<strong>响应包</strong>中也会有的，注意一下就行</p><h4 id="例七域名解析"><a href="#例七域名解析" class="headerlink" title="例七域名解析"></a>例七域名解析</h4><p>直接塞网址<a href="http://dbcha.com/">http://dbcha.com/</a>里</p><p>看看有没有flag即可</p><h4 id="例八管理员界面"><a href="#例八管理员界面" class="headerlink" title="例八管理员界面"></a>例八管理员界面</h4><p>一般网站后台管理默认为</p><p>admin.php</p><p>adminer.php</p><p>之类的</p><h4 id="例九网页编辑器"><a href="#例九网页编辑器" class="headerlink" title="例九网页编辑器"></a>例九网页编辑器</h4><p>网页后面接/editor/</p><p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/50ae2f84d4c44f7ab2f4b0c9d8ffb99c~tplv-k3u1fbpfcp-watermark.image" alt="图片.png"></p><p>看看有没有东西出来</p><p>有的话可以翻翻</p><p>例如上传图片的地方，一般有网站后台的图片</p><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a7329bbaa4c341109b4a34f1fd0ec709~tplv-k3u1fbpfcp-watermark.image" alt="图片.png"></p><h4 id="例十db"><a href="#例十db" class="headerlink" title="例十db"></a>例十db</h4><p>这个。。。。有点复杂，除了咱们学的,mysql数据库，还有一些其他的数据库，例如access</p><p>实在不会，直接网站后面接</p><pre><code>/db/db.mdb</code></pre><p>看看有没有反应就拉到</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 信息泄露 CTF IK&amp;N </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>图书馆里坐一会，破解了馆长室的WIFI？(省流：标题党</title>
       <link href="/posts/fe20.html"/>
       <url>/posts/fe20.html</url>
